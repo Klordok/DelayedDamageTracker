@@ -23,12 +23,17 @@ def button_clear():
     return
 
 def button_add():
-    first_number = entryField.get()
+    try:
+        first_number = int(entryField.get())
+    except:
+        first_number = 0
+    
     global f_num
-    f_num = int(first_number)
+    f_num = first_number
     entryField.delete(0, END)
 
 def button_equal():
+
     second_number = entryField.get()
     entryField.delete(0, END)
     entryField.insert(0, f_num + int(second_number))
