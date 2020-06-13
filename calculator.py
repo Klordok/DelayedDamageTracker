@@ -2,7 +2,7 @@ from tkinter import Tk, Entry, END, Button
 import os
 
 root = Tk()
-root.title("Delayed Damage Tracker")
+root.title("Adder")
 #root.geometry("400x600")
 
 entryField = Entry(root, width=35, borderwidth=5)
