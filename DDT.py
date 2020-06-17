@@ -2,18 +2,18 @@ from tkinter import Tk, Entry, END, Button, Label
 import os
 
 totalDamage = 0
+
+
 root = Tk()
 root.title("Delayed Damage Tracker")
 #root.geometry("400x600")
 
-global damageLabel
 damageLabel = Label(root, text=totalDamage)
 
-
-def button_reset(damageLabel):
+def button_reset():
     #clear damage counter
     entryField.delete(0, END)
-    damageLabel.destroy()
+    root.damageLabel.destroy()
 
     return
 
@@ -24,8 +24,8 @@ def button_commit():
         poolDamage = 0
 
     try:
-        totalDamage = int(damageLabel.cget("text"))
-        damageLabel.destroy()
+        totalDamage = int(root.damageLabel.cget("text"))
+        root.damageLabel.destroy()
     except:
         totalDamage = 0
 
@@ -34,9 +34,8 @@ def button_commit():
 
     totalDamage += poolDamage
 
-    global damageLabel
-    damageLabel = Label(root, text=totalDamage)
-    damageLabel.pack()
+    root.damageLabel = Label(root, text=totalDamage)
+    root.damageLabel.pack()
 
 #Define fields
 entryField = Entry(root, width=10, borderwidth=5)
@@ -49,10 +48,11 @@ entryField.pack()
 button_1 = Button(root, text="End Turn", command=button_commit)
 button_2 = Button(root, text="Reset", command=button_reset)
 
-#Put buttons on screen
+#display stuff
 
 button_1.pack()
 button_2.pack()
+#damageLabel.pack()
 
 
 root.mainloop()

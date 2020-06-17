@@ -1,25 +1,22 @@
-import tkinter as tk
+from tkinter import Tk, Label, Button
 
-class Application(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
+class MyFirstGUI:
+    def __init__(self, master):
         self.master = master
-        self.pack()
-        self.create_widgets()
+        master.title("A simple GUI")
 
-    def create_widgets(self):
-        self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Hello World\n(click me)"
-        self.hi_there["command"] = self.say_hi
-        self.hi_there.pack(side="top")
+        self.label = Label(master, text="This is our first GUI!")
+        self.label.pack()
 
-        self.quit = tk.Button(self, text="QUIT", fg="red",
-                              command=self.master.destroy)
-        self.quit.pack(side="bottom")
+        self.greet_button = Button(master, text="Greet", command=self.greet)
+        self.greet_button.pack()
 
-    def say_hi(self):
-        print("hi there, everyone!")
+        self.close_button = Button(master, text="Close", command=master.quit)
+        self.close_button.pack()
 
-root = tk.Tk()
-app = Application(master=root)
-app.mainloop()
+    def greet(self):
+        print("Greetings!")
+
+root = Tk()
+my_gui = MyFirstGUI(root)
+root.mainloop()
