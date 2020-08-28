@@ -24,6 +24,7 @@ def button_commit():
         poolDamage = 0
 
     try:
+        #save the pending damage then destroy the label
         totalDamage = int(root.damageLabel.cget("text"))
         root.damageLabel.destroy()
     except:
@@ -39,9 +40,8 @@ def button_commit():
 
 #Define fields
 entryField = Entry(root, width=10, borderwidth=5)
-
-entryField.pack()
-
+poolDescription = Label(root, text = "Pending Damage")
+damageDescription = Label(root, text = "Total Damage")
 
 #Define buttons
 
@@ -52,6 +52,7 @@ button_2 = Button(root, text="Reset", command=button_reset)
 
 button_1.pack()
 button_2.pack()
+entryField.pack()
 #damageLabel.pack()
 
 
